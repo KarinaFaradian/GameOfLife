@@ -5,6 +5,8 @@ module.exports = {
       "jest/globals": true,
     },
     extends: ["airbnb-base", "plugin:jest/recommended", "prettier"],
+    parser: '@typescript-eslint/parser',
+    plugins: ['@typescript-eslint'],
     parserOptions: {
       ecmaVersion: 12,
       sourceType: "module",

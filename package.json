@@ -5,7 +5,10 @@
     "@babel/preset-typescript": "^7.18.6",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
+    "@webpack-cli/serve": "^2.0.0",
     "babel-jest": "^29.3.1",
+    "babel-loader": "^9.1.0",
+    "clean-webpack-plugin": "^4.0.0",
     "eslint": "^8.28.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
@@ -14,19 +17,22 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^27.1.5",
     "eslint-plugin-prettier": "^4.2.1",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^29.3.1",
     "jest-localstorage-mock": "^2.4.22",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.11.1"
   },
   "scripts": {
     "test": "jest --coverage",
-    "lint": "prettier --check src && eslint src --ext .js,.ts && stylelint \"**/*.scss\"",
-    "lint:fix": "prettier --write src && eslint src --fix --ext .js,.ts && stylelint \"**/*scss\" --fix",
-    "build-dev": "webpack",
-    "start": "webpack serve",
-    "build": "webpack --node-env=production",
+    "lint": "prettier --check . && eslint . --ext .js,.ts && tsc --noEmit",
+    "lint:fix": "prettier --write . && eslint . --fix --ext .js,.ts",
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode development",
     "clear": "rd /s /q dist",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
@@ -42,8 +48,18 @@
         "lines": 60
       }
     },
+    "lint-staged": {
+      "*.js,*.ts": [
+        "prettier --write",
+        "eslint --cache --fix --ext .js,.ts"
+      ],
+      "*.{css,md}": "prettier --write"
+    },
     "setupFiles": [
       "jest-localstorage-mock"
     ]
+  },
+  "dependencies": {
+    "autoprefixer": "10.4.5"
   }
 }
