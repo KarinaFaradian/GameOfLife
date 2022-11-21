@@ -1,11 +1,11 @@
 import { GameView } from "./GameView";
 
-describe.skip("GameView", () => {
+describe("GameView", () => {
   let el: HTMLElement;
   beforeEach(() => {
     el = document.createElement("div");
   });
-  describe.skip("public interface", () => {
+  describe("public interface", () => {
     it("is a class", () => {
       expect(GameView).toBeInstanceOf(Function);
       expect(new GameView(el)).toBeInstanceOf(GameView);
@@ -27,7 +27,7 @@ describe.skip("GameView", () => {
     });
   });
 
-  describe.skip("functional interface", () => {
+  describe("functional interface", () => {
     let gameView: GameView;
     beforeEach(() => {
       gameView = new GameView(el);
