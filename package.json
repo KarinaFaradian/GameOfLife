@@ -47,18 +47,18 @@
         "functions": 60,
         "lines": 60
       }
-    },
-    "lint-staged": {
-      "*.js,*.ts": [
-        "prettier --write",
-        "eslint --cache --fix --ext .js,.ts"
-      ],
-      "*.{css,md}": "prettier --write"
-    },
-    "setupFiles": [
-      "jest-localstorage-mock"
-    ]
+    }
   },
+  "lint-staged": {
+    "*.js,*.ts": [
+      "prettier --write",
+      "eslint --cache --fix --ext .js,.ts"
+    ],
+    "*.{css,md}": "prettier --write"
+  },
+  "setupFiles": [
+    "jest-localstorage-mock"
+  ],
   "dependencies": {
     "autoprefixer": "10.4.5"
   }
